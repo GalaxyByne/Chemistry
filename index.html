@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Chemical Info</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 20px
+            }
+        </style>
+    </head>
+    <body>
+      <h1 id="title">Loading...</h1>
+      <div id="info">Please wait.</div>
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const chemical = urlParams.get("chemical");
+
+        const data = {
+          "water": {
+            name: "Oxidane",
+            common: "Water",
+            formula: "H₂O",
+            structure: "H-O-H",
+            state: "Liquid",
+          },
+          "ethanol": {
+            name: "Ethanol",
+            common: "Alcohol",
+            formula: "C₂H₆O",
+            structure: "CH₃-CH₂-OH",
+            state: "Liquid",
+          }
+        };
+
+        if (chemical && data[chemical.toLowerCase()]) {
+          const chem = data[chemical.toLowerCase()];
+          document.getElementById("title").innerText = `${chem.name} (${chem.common})`;
+          document.getElementById("info").innerHTML = `
+            <p><strong>Formula:</strong> ${chem.formula}</p>
+            <p><strong>Structure:</strong> ${chem.structure}</p>
+            <p><strong>State:</strong> ${chem.state}</p>
+          `;
+        } else {
+          document.getElementById("title").innerText = "Not Found";
+          document.getElementById("info").innerText = "Chemical data is not available.";
+        }
+      </script>
+    </body>
+</html>
