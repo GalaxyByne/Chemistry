@@ -46,6 +46,7 @@ strong {
 }
 @media (max-width: 768px) {
     body {
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
