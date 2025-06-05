@@ -49,4 +49,7 @@ strong {
         padding-left: 0;
         padding-right: 0;
     }
+    .card {
+        width: 100%;
+    }
 }
