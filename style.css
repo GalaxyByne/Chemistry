@@ -30,8 +30,8 @@ strong {
     color: #a4e5ff;
     font-weight: 600;
 }
-.structure {
-    display: flex
+#structure {
+    max-width: 100%;
 }
 .card th {
     color: #ffffff;
