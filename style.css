@@ -9,7 +9,8 @@ body {
     background: #13172b;
     padding: 2rem;
     border-radius: 8px;
-    height: 100vh;
+    height: 90vh;
+    box-shadow: 0 0 5px #13172b;
 }
 .card {
     background: #2b3a57;
@@ -43,6 +44,10 @@ strong {
     padding: 0.5rem;
     padding-top: 0rem;
     padding-bottom: 0rem;
+}
+#fire_diamond {
+    text-align: center;
+    padding: 5%;
 }
 @media (max-width: 768px) {
     body {

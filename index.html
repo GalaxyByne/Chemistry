@@ -49,6 +49,22 @@
                             <p id="standard_amount"></p>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Standard State:</strong></p>
+                        </td>
+                        <td>
+                            <p id="standard_state"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Hazards</th>
+                    </tr>
+                    <tr>
+                        <td id="fire_diamond" colspan="2">
+                            <img alt="Fire Diamond" src="element/fire_diamond.png">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -60,7 +76,8 @@
                     common_names: 'Ethyl Alcohol',
                     chemical_formula: 'C₂H₆O',
                     image_path: 'structure/ethanol.png',
-                    standard_amount: '9 mol'
+                    standard_amount: '9 mol',
+                    standard_state: 'Liquid'
                 }
             };
             if (chemical && chemicalData[chemical]) {
@@ -69,6 +86,7 @@
                 document.getElementById('common_names').textContent = chemicalData[chemical].common_names;
                 document.getElementById('chemical_formula').textContent = chemicalData[chemical].chemical_formula;
                 document.getElementById('standard_amount').textContent = chemicalData[chemical].standard_amount;
+                document.getElementById('standard_state').textContent = chemicalData[chemical].standard_state;
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
                 link.href = '../style.css';
