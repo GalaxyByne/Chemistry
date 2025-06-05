@@ -1,98 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chemical Info</title>
-    <style>
-        body {
-            font-family: 'Exo 2', sans-serif;
-            background: #000b16;
-            color: #ffffff;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        h1#title {
-            flex: 1;
-            font-size: 2rem;
-            color: #e7e7e7;
-            margin: 0;
-            font-weight: 400;
-        }
-        .card {
-            background: #2b2b2b;
-            box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
-            padding: 1.5rem;
-            width: 300px;
-            box-sizing: border-box;
-        }
-        p {
-            margin: 0.25rem 0;
-        }
-        strong {
-            color: #95d4ff;
-            font-weight: 700;
-        }
-        @media (max-width: 600px) {
-            .container {
-                flex-direction: column;
-            }
-            .card {
-                width: 100%;
-                margin-top: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 id="title"></h1>
-        <div id="info" class="card"></div>
-    </div>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const chemical = urlParams.get("chemical")?.toLowerCase().replace(/\s+/g, "_");
-
-        const data = {
-            "water": {
-                name: "Water",
-                formula: "H₂O",
-                state: "Liquid",
-            },
-            "ethanol": {
-                name: "Ethanol",
-                common_name: "Ethyl Alcohol",
-                formula: "C₂H₆O",
-                state: "Liquid",
-            }
-        };
-
-        if (chemical && data[chemical]) {
-            const chem = data[chemical];
-            document.getElementById("title").innerHTML = `
-                <strong>${chem.name}</strong>
-            `;
-            if (chem.common_name) {
-                document.getElementById("info").innerHTML = `
-                    <p><strong>Common Name:</strong> ${chem.common_name}</p>
-                `
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            Chemical Overview
+        </title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="container">
+            <table class="card">
+                <thead>
+                    <tr>
+                        <th colspan="2" id="name">Loading...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" id="structure_cell">
+                            <img id="structure" src="" alt="Chemical Structure">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p><strong>Common Names:</strong></p>
+                            <p id="common_names" class="entry"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Item Information</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Chemical Formula:</strong></p>
+                        </td>
+                        <td>
+                            <p id="chemical_formula"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Standard Amount:</strong></p>
+                        </td>
+                        <td>
+                            <p id="standard_amount"></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const chemical = params.get('chemical');
+            const chemicalData = {
+                Ethanol: {
+                    common_names: 'Ethyl Alcohol',
+                    chemical_formula: 'C₂H₆O',
+                    image_path: '../structure/ethanol.png',
+                    standard_amount: '9 mol'
+                }
             };
-            document.getElementById("info").innerHTML += `
-                <p><strong>Formula:</strong> ${chem.formula}</p>
-                <p><strong>State:</strong> ${chem.state}</p>
-            `;
-        } else {
-            document.getElementById("title").innerText = "Chemical not found";
-        }
-    </script>
-</body>
+            if (chemical && chemicalData[chemical]) {
+                document.getElementById('name').textContent = chemical;
+                document.getElementById('structure').src = chemicalData[chemical].image_path;
+                document.getElementById('common_names').textContent = chemicalData[chemical].common_names;
+                document.getElementById('chemical_formula').textContent = chemicalData[chemical].chemical_formula;
+                document.getElementById('standard_amount').textContent = chemicalData[chemical].standard_amount;
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = '../style.css';
+                document.head.appendChild(link);
+            } else {
+                document.getElementById('name').textContent = "Unable to load chemical";
+            }
+        </script>
+    </body>
 </html>

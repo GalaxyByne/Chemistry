@@ -1,0 +1,46 @@
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: #2c2c2c;
+    color: #ffffff;
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+.container {
+    background: #13172b;
+    padding: 2rem;
+    border-radius: 8px;
+    height: 100vh;
+}
+.card {
+    background: #2b3a57;
+    box-shadow: 4px 4px 0px #a4e5ff;
+    max-width: 300px;
+    margin-right: auto;
+}
+#structure_cell {
+    text-align: center;
+}
+p {
+    margin: 0.25rem 0;
+}
+p.entry {
+    margin: 0.25rem 0.5rem;
+}
+strong {
+    color: #a4e5ff;
+    font-weight: 600;
+}
+.structure {
+    display: flex
+}
+.card th {
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #a4e5ff3d;
+}
+.card td {
+    border: 1px solid #a4e5ff3d;
+    padding: 0.5rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
