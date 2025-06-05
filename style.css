@@ -52,4 +52,7 @@ strong {
     .card {
         width: 100%;
     }
+    #structure {
+        max-width: 100%;
+    }
 }
