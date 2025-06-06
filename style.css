@@ -33,6 +33,7 @@ strong {
 }
 #structure {
     max-width: 100%;
+    filter: invert(1);
 }
 .card th {
     color: #ffffff;
@@ -48,6 +49,33 @@ strong {
 #fire_diamond {
     text-align: center;
     padding: 5%;
+    position: relative;
+}
+#fire_diamond p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+#fire_diamond_health {
+    position: absolute;
+    top: 26%;
+    left: 37%;
+}
+#fire_diamond_fire {
+    position: absolute;
+    top: 10%;
+    left: 47%;
+}
+#fire_diamond_reactivity {
+    position: absolute;
+    top: 26%;
+    left: 58%;
+}
+#fire_diamond_specific {
+    position: absolute;
+    top: 40%;
+    left: 37%;
+    font-size: 1rem;
 }
 @media (max-width: 768px) {
     body {

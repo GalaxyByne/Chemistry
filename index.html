@@ -35,6 +35,14 @@
                     </tr>
                     <tr>
                         <td>
+                            <p><strong>Numeric ID:</strong></p>
+                        </td>
+                        <td>
+                            <p id="numeric_id"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <p><strong>Chemical Formula:</strong></p>
                         </td>
                         <td>
@@ -51,10 +59,26 @@
                     </tr>
                     <tr>
                         <td>
-                            <p><strong>Standard State:</strong></p>
+                            <p><strong>Standard Phase:</strong></p>
                         </td>
                         <td>
-                            <p id="standard_state"></p>
+                            <p id="standard_phase"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Composition:</strong></p>
+                        </td>
+                        <td>
+                            <p id="composition"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Stability:</strong></p>
+                        </td>
+                        <td>
+                            <p id="stability"></p>
                         </td>
                     </tr>
                     <tr>
@@ -62,7 +86,11 @@
                     </tr>
                     <tr>
                         <td id="fire_diamond" colspan="2">
-                            <img alt="Fire Diamond" src="element/fire_diamond.png">
+                            <img alt="Fire Diamond" src="../element/fire_diamond.png">
+                            <p id="fire_diamond_health">3</p>
+                            <p id="fire_diamond_fire">2</p>
+                            <p id="fire_diamond_reactivity">2</p>
+                            <p id="fire_diamond_specific">OXY</p>
                         </td>
                     </tr>
                 </tbody>
@@ -72,21 +100,37 @@
             const params = new URLSearchParams(window.location.search);
             const chemical = params.get('chemical');
             const chemicalData = {
-                Ethanol: {
+                "Ethanol": {
                     common_names: 'Ethyl Alcohol',
+                    numeric_id: '1004000',
                     chemical_formula: 'C₂H₆O',
-                    image_path: 'structure/ethanol.png',
+                    image_path: '../structure/ethanol.png',
                     standard_amount: '9 mol',
-                    standard_state: 'Liquid'
+                    standard_phase: 'Liquid',
+                    composition: '6¹H; 2¹²C; ¹⁶O',
+                    stability: 'Stable'
+                },
+                "Ethanoic Acid": {
+                    common_names: 'Ethyl Alcohol',
+                    numeric_id: '1004000',
+                    chemical_formula: 'C₂H₆O',
+                    image_path: '../structure/ethanoic_acid.png',
+                    standard_amount: '9 mol',
+                    standard_phase: 'Liquid',
+                    composition: '6¹H; 2¹²C; ¹⁶O',
+                    stability: 'Stable'
                 }
             };
             if (chemical && chemicalData[chemical]) {
                 document.getElementById('name').textContent = chemical;
                 document.getElementById('structure').src = chemicalData[chemical].image_path;
+                document.getElementById('numeric_id').textContent = chemicalData[chemical].numeric_id;
                 document.getElementById('common_names').textContent = chemicalData[chemical].common_names;
                 document.getElementById('chemical_formula').textContent = chemicalData[chemical].chemical_formula;
                 document.getElementById('standard_amount').textContent = chemicalData[chemical].standard_amount;
-                document.getElementById('standard_state').textContent = chemicalData[chemical].standard_state;
+                document.getElementById('standard_phase').textContent = chemicalData[chemical].standard_phase;
+                document.getElementById('composition').textContent = chemicalData[chemical].composition;
+                document.getElementById('stability').textContent = chemicalData[chemical].stability;
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
                 link.href = '../style.css';
